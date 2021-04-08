@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In</title>
+</head>
+<body>
+    <div style="text-align:center; margin: auto; width: 20%; padding: 50px;">
+        <h1>Sign In</h1>
+        <hr><br>
+
+        <form action="{{url_for('addrec')}}" method="POST">
+            <p style="font: bold 15px arial;"><b>First Name</b></p>
+            <input type='text' name='first' placeholder="Enter Your First Name" required autofocus size=25/>
+
+            <p style="font: bold 15px arial;"><b>Last Name</b></p>
+            <input type='text' name='last' placeholder="Enter Your Last Name" required autofocus size=25/>
+
+            <p style="font: bold 15px arial;"><b>Email</b></p>
+            <input type='email' name='email' placeholder="Enter Your Email Address" required autofocus size=25/>
+
+            <p style="font: bold 15px arial;"><b>Password</b></p>
+            <input type='password' name='password' placeholder="Enter Your Password" required autofocus size=25/>
+
+            <p style="font: bold 15px arial;"><b>Confirm Password</b></p>
+            <input type='password' name='confirm_password' placeholder="Enter Your Password To Confirm" required autofocus size=25/>
+            <br><br>
+
+            <input type='submit' value="Enter" style="background: blue ;color: white;border-style: outset;border-color: #0066A2;height: 50px;width: 100px;font: bold 15px arial, sans-serif;text-shadow:none;border-radius: 5%;"/>
+        </form>
+        {% for mesg in get_flashed_messages() %}
+            <h3 style="color: red; padding: 5px; margin: 5px; font: bold 15px arial;">{{ mesg }}</h3>
+        {% endfor %}
+    </div>
+</body>
+</html>

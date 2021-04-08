@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <title>Genre Based Recommendation</title>
+</head>
+<body>
+    <div>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">Recommendation System</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse " ></div>
+                <ul class="navbar-nav navbar-right">
+                  <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="{{url_for('home')}}">Top Rated Movies</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('content')}}">Based on Content</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" href="#">Based on Genre</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+        </nav>
+    </div>
+    <br>
+    <!-- <form action="http://localhost:5000/genre" method="POST" style="width:500px; margin:20px auto; padding: 20px; font: bold 20px arial"> -->
+    <form action="{{url_for('genre')}}" method="POST" style="width:500px; margin:20px auto; padding: 20px; font: bold 20px arial">
+      <label><strong>Select The Genre</strong></label>
+      <select name='please'>
+        <option value='Comedy'>Comedy</option>
+        <option value='Drama'>Drama</option>
+        <option value='Adventure'>Adventure</option>
+        <option value='Crime'>Crime</option>
+        <option value='Action'>Action</option>
+      </select>
+      <input type='submit' value="Enter"/>
+    </form>
+    <br>
+    {% if overview.any() %}
+
+      <h1 style="width:1100px; margin:20px auto; padding: 20px;">RECOMMENDED MOVIES FOR YOU BASED ON {{category|upper}}</h1>
+      <br>
+      </div>
+      <div style="width:800px; margin:20px auto; padding: 20px;">
+        <div>
+        <p style="font: bold 15px arial"><strong>TITLE: </strong>{{movie_title[0].capitalize()}}</p>
+        <p style="font: bold 15px arial"><strong>OVERVIEW: </strong></p>
+        <p style="font: bold 15px arial">{{overview[0]}}</p>
+        <p style="font: bold 15px arial"><strong>RATING: </strong>{{ratings[0]}}/10 ({{votes[0]}} votes)</p>
+        </div>
+        <br>
+        <br>
+        <div>
+          <p style="font: bold 15px arial"><strong>TITLE: </strong>{{movie_title[1].capitalize()}}</p>
+          <p style="font: bold 15px arial"><strong>OVERVIEW: </strong></p>
+          <p style="font: bold 15px arial">{{overview[1]}}</p>
+          <p style="font: bold 15px arial"><strong>RATING: </strong>{{ratings[1]}}/10 ({{votes[1]}} votes)</p>
+        </div>
+        <br>
+        <br>
+        <div>
+          <p style="font: bold 15px arial"><strong>TITLE: </strong>{{movie_title[2].capitalize()}}</p>
+          <p style="font: bold 15px arial"><strong>OVERVIEW: </strong></p>
+          <p style="font: bold 15px arial">{{overview[2]}}</p>
+          <p style="font: bold 15px arial"><strong>RATING: </strong>{{ratings[2]}}/10 ({{votes[2]}} votes)</p>
+        </div>
+        <br>
+        <br>
+        <div>
+          <p style="font: bold 15px arial"><strong>TITLE: </strong>{{movie_title[3].capitalize()}}</p>
+          <p style="font: bold 15px arial"><strong>OVERVIEW: </strong></p>
+          <p style="font: bold 15px arial">{{overview[3]}}</p>
+          <p style="font: bold 15px arial"><strong>RATING: </strong>{{ratings[3]}}/10 ({{votes[3]}} votes)</p>
+        </div>
+        <br>
+        <br>
+        <div>
+          <p style="font: bold 15px arial"><strong>TITLE: </strong>{{movie_title[4].capitalize()}}</p>
+          <p style="font: bold 15px arial"><strong>OVERVIEW: </strong></p>
+          <p style="font: bold 15px arial">{{overview[4]}}</p>
+          <p style="font: bold 15px arial"><strong>RATING: </strong>{{ratings[4]}}/10 ({{votes[4]}} votes)</p>
+        </div>
+        <br>
+        <br>
+        <div>
+          <p style="font: bold 15px arial"><strong>TITLE: </strong>{{movie_title[5].capitalize()}}</p>
+          <p style="font: bold 15px arial"><strong>OVERVIEW: </strong></p>
+          <p style="font: bold 15px arial">{{overview[5]}}</p>
+          <p style="font: bold 15px arial"><strong>RATING: </strong>{{ratings[5]}}/10 ({{votes[5]}} votes)</p>
+        </div>
+        <br>
+        <br>
+        <div>
+          <p style="font: bold 15px arial"><strong>TITLE: </strong>{{movie_title[6].capitalize()}}</p>
+          <p style="font: bold 15px arial"><strong>OVERVIEW: </strong></p>
+          <p style="font: bold 15px arial">{{overview[6]}}</p>
+          <p style="font: bold 15px arial"><strong>RATING: </strong>{{ratings[6]}}/10 ({{votes[6]}} votes)</p>
+        </div>
+        <br>
+        <br>
+        <div>
+          <p style="font: bold 15px arial"><strong>TITLE: </strong>{{movie_title[7].capitalize()}}</p>
+          <p style="font: bold 15px arial"><strong>OVERVIEW: </strong></p>
+          <p style="font: bold 15px arial">{{overview[7]}}</p>
+          <p style="font: bold 15px arial"><strong>RATING: </strong>{{ratings[7]}}/10 ({{votes[7]}} votes)</p>
+        </div>
+        <br>
+        <br>
+        <div>
+          <p style="font: bold 15px arial"><strong>TITLE: </strong>{{movie_title[8].capitalize()}}</p>
+          <p style="font: bold 15px arial"><strong>OVERVIEW: </strong></p>
+          <p style="font: bold 15px arial">{{overview[8]}}</p>
+          <p style="font: bold 15px arial"><strong>RATING: </strong>{{ratings[8]}}/10 ({{votes[8]}} votes)</p>
+        </div>
+        <br>
+        <br>
+        <div>
+          <p style="font: bold 15px arial"><strong>TITLE: </strong>{{movie_title[9].capitalize()}}</p>
+          <p style="font: bold 15px arial"><strong>OVERVIEW: </strong></p>
+          <p style="font: bold 15px arial">{{overview[9]}}</p>
+          <p style="font: bold 15px arial"><strong>RATING: </strong>{{ratings[9]}}/10 ({{votes[9]}} votes)</p>
+        </div>
+        <br>
+      </div>
+
+    {% endif %}
+
+
+
+</body>
+</html>

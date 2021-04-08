@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    <div style="text-align:center; margin: auto; width: 20%; padding: 50px;">
+        <h1>Login</h1>
+        <hr><br>
+
+        <form action="{{url_for('checkrec')}}" method="POST">
+            <p style="font: bold 15px arial;"><b>Enter Your Email Address</b></p>
+            <input type='email' name='email' placeholder="Enter Your Email Address" required autofocus size=30/>
+
+            <p style="font: bold 15px arial;"><b>Enter the Password</b></p>
+            <input type='password' name='password' placeholder="Enter Your Password" required autofocus size=30/>
+            <br><br>
+
+            <input type='submit' value="Enter" style="background: blue ;color: white;border-style: outset;border-color: #0066A2;height: 30px;width: 80px;font: bold 15px arial, sans-serif;text-shadow:none;border-radius: 5%;"/>
+        </form>
+        <br>
+        <a href="{{url_for('sign_up')}}" style="font: bold 15px arial;">Sign Up</a>
+        {% for mesg in get_flashed_messages() %}
+            <h3 style="color: red; padding: 5px; margin: 5px;">{{ mesg }}</h3>
+        {% endfor %}
+    </div>
+</body>
+</html>

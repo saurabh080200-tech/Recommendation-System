@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  
+    <title>Content Based Recommendation</title>
+</head>
+
+<body>
+    <div>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+              <h3 style="color:crimson;">Recommendation System</h3>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse " ></div>
+                <ul class="navbar-nav navbar-right">
+                  <li class="nav-item">
+                    <a class="nav-link " aria-current="page" href="{{url_for('home')}}">Top Rated Movies</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" href="#">Based on Content</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('genre')}}">Based on Genre</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+        </nav>
+    </div>
+    <br>
+    <div style="text-align:center; margin: auto; width: 40%; padding: 10px;">
+        <h3>Recommendation Based On Movies Content</h3>
+        <br>
+        <form action="{{url_for('recommendation_content')}}" method="POST">
+            <div class="input-group input-group-lg">
+                <input type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="Enter The Name Of The Movie" name="movie" required>
+            </div>
+            <br>
+            <input type='submit' value="Enter" style="background: maroon;color: white;border-style: outset;border-color: #0066A2;height: 50px;width: 100px;font: bold 15px arial, sans-serif;text-shadow:none;"/>
+        </form>
+    </div>
+    <br>
+    {% if outputs %}
+      {% set a = outputs.split('---') %}
+      {% if a|length == 1 %}
+        <h3 style="color: red;font: bold 15px arial;text-align:center; margin: auto; width: 50%; padding: 10px;">{{a[0]}}</h3>
+      {% else %}
+        <br>
+        <div style="text-align:center; margin: auto; width: 50%; padding: 10px;">
+          <h2 style="font: bold 30px arial">{{a[1].capitalize()}}</h2>
+          <hr>
+          <p style="font: bold 15px arial"><strong>TITLE: </strong>{{a[1].capitalize()}}</p>
+          <p style="font: bold 15px arial"><strong>OVERVIEW: </strong></p>
+          <p style="font: bold 15px arial">{{a[2]}}</p>
+          <p style="font: bold 15px arial"><strong>RATING: </strong>{{a[3]}}/10 ({{a[4]}} votes)</p>
+          <p style="font: bold 15px arial"><strong>GENRE: </strong>{{a[0]}}</p>
+          <hr>
+          <h2 style="font: bold 30px arial">RECOMMENDED MOVIES FOR YOU</h2>
+          <br>
+          {% for i in a[7:] %}
+            <p style="font: bold 15px arial"><strong>{{i.capitalize()}}</strong></p>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endif %}
+</body>
+</html>
